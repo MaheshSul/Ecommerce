@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function StringOperation(str1, str2) {
+
+            //String1 Length,Covert into UpperCase and Lowecase
+            var result = "Length of String : " + str1 + " is : " + str1.length + "<br/>";
+            result += "Upper Case String is :" + str1.toUpperCase() + "<br/>";
+            result += "Lower Case String is :" + str1.toLowerCase() + "<br/>";
+
+            //Find S character in String1 and at Which Position
+            var x = str1.search("S");
+            if (x < 0)
+                result += "S is not Found <br/>";
+            else
+                result += "S Found At : " + x + "<br/>";
+
+            // Char at Index 4 Value and ASCII Value
+            result += "char at Index 4 : " + " "+str1.charAt(4) + "<br/>";
+            result += "ASCII Value Char at Index 4 : " +" "+ str1.charCodeAt(4) + "<br/>";
+
+            //String1 Conacated With String2
+            result += "Concatenated String is : " + str1.concat(str2," ") + "<br/>";
+
+            // Split String1 From Spaces
+            result += "Splitted String is : " + str1.split(" ") + "<br />";
+            document.getElementById("result").innerHTML = result;
+        }
+
+
+    </script>
+</head>
+<body>
+    <form>
+        Enter a String : <input type="text" name="str1" /><br/><br />
+        Enter string to Conacat :<input type="text" name="str2" /><br/>
+        <button type="button" onclick="StringOperation(str1.value, str2.value);"> View Result </button>
+    </form>
+    <p id="result"></p>
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title> Data Validation </title>
+    <script>
+        function validate() {
+            var uid = document.f1.uid.value;
+            if (uid.length < 8 || uid.length > 15) {
+                alert("UID Lenght Should be 8-15 Characters....!!! ");
+                document.f1.uid.value = "";
+                document.f1.uid.focus();
+                return;
+            }
+
+            var pwd = document.f1.pwd.value;
+            if (pwd.lenght < 6 || pwd.length > 12) {
+                alert("Password Lenght Should be 6-12 Characters....!!! ");
+                document.f1.pwd.value = "";
+                document.f1.pwd.focus();
+                return;
+            }
+
+            var radioarr = document.getElementsByName("G1");
+            var radioflag = false;
+            for (i = 0; i < radioarr.length; i++) {
+                if (radioarr[i].checked == true)
+                    radioflag = true;
+            }
+
+            if (radioflag == false) {
+                alert("Gender is Not Selected....!!! ");
+                return;
+            }
+
+            alert(" Data Gets Submitted....!!!");
+            document.f1.submit();
+        }
+    </script>
+</head>
+<body name="f1">
+    UID : <input type="text" name="uid" id="uid" /><br/><br/>
+    PWd : <input type="password" name="pwd"/><br/><br/>
+    Gender : <input type="radio" name="G1" value="male"/> Male
+             <input type="radio" name="G1" value="female" />Female <br/><br/>
+    <input type="button" value="Register" onclick="validate()" />
+ 
+</body>
+</html>

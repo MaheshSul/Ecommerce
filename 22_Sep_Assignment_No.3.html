@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title> Stop Watch</title>
+    <script>
+        h = m = s = ms = 0;
+        function prepare() {
+            
+            if (h < 10)
+                h = pad(h, 1);
+            if (m < 10)
+                m = pad(m, 1);
+            if (s < 10)
+                s = pad(s,1);
+            if (ms < 10)
+                ms = pad(ms,2);
+            if (ms >= 10 && ms < 100)
+                ms = ms=pad(ms,1);
+            time = h + ":" + m + ":" + s +":" +ms;
+            document.getElementById("time").innerHTML = time;
+        }
+
+        function pad(num,size) {
+            var s = "";
+            for (i = 0; i < size; i++) {
+                s += "0";
+            }
+            s += parseInt(num);
+            return s;
+        }
+
+        function start() {
+            ms++;
+            if (ms == 1000) {
+                s++;
+                ms = 0;
+            }
+            if (s == 60) {
+                m++;
+                s = 0;
+            }
+            if (m == 60) {
+                h++;
+                m = 0;
+            }
+            prepare();
+
+            //flag = setTimeout(start, 1);
+            flag = setTimeout(function () { start(); }, 1);
+        }
+
+        function stop() {
+            clearTimeout(flag);
+        }
+
+        function reset() {
+            h = m = s = ms = 0;
+            prepare();
+        }
+    </script>
+</head>
+<body onload="prepare()">
+    <div>Time : <span id="time"></span></div>
+    <input type="button" value="Start" onclick="start()" />
+    <input type="button"value="Stop" onclick="stop()" />
+    <input type="button" value="Reset" onclick="reset()" />
+   
+</body>
+</html>

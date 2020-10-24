@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title> Swap Images </title>
+    <script>
+        var index = 0;
+        var images = ["gaming.jpg", "mahii1.jpg", "mahii3.jpg", "mahii4.jpg", "mahii5.jpg", "mahii6.jpg", "mahii7.jpg"];
+
+        function swapImage() {
+            index++;
+            if (index == images.length)
+                index = 0;
+            document.getElementById("img").src = images[index];
+            setTimeout("swapImage()", 1000);
+        }
+    </script>
+</head>
+<body onload="swapImage()" >
+    <img src="gaming.jpg" width="300" height="300" id="img" />
+
+</body>
+</html>
